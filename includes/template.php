@@ -1,6 +1,6 @@
 <?php
 
-function start_template() 
+function start_template($css_files = array()) 
 {
 ?>
 	<!DOCTYPE html>
@@ -11,6 +11,11 @@ function start_template()
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/template.css">
+	<?php
+	foreach ($css_files as $ind => $val) {
+		echo "<link rel=\"stylesheet\" href=\"$val\">";
+	}
+	?>
 	</head>
 	<body>
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -41,13 +46,18 @@ function start_template()
 <?php
 }
 
-function end_template()
+function end_template($js_files = array())
 {
 ?>
 	<footer class="container-fluid bg-blue white-text text-center">
 		<h1>QuizMe</h1>
 	</footer>
 	<script src="js/jquery-1.12.0.min.js"></script>
+	<?php
+	foreach ($js_files as $ind => $val) {
+		echo "<script src=\"$val\"></script>";
+	}
+	?>
 	<script src="js/bootstrap.min.js"></script>
 	</body>
 	</html>

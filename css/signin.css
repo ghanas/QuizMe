@@ -1,0 +1,13 @@
+#signin_form {
+	border-radius: 7px;
+	background: #272727;
+	padding: 20px;
+	color: #fff;
+	max-width: 400px;
+	margin: 0 auto;
+}
+
+#error1, #error2 {
+	font-size: 20px;
+	color: red;
+}

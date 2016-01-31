@@ -43,21 +43,36 @@ if (!is_logged_in()) {
 		//Get database connection
 		$dbc = db_connect();
 		if ($dbc == false) {
-		  show_forms('Error: unable to connect to user database.');
+		  echo 'Error: unable to connect to user database.';
 		}
 
-		$dbc->query("")
+		$result = $dbc->query("SELECT  QWD.deck_name 
+				FROM qw_deck QWD, qw_users QWU, qw_subjects QWS 
+				WHERE QWD.owner_id = QWU.user_id 
+				AND QWD.subject_id = QWS.id
+				AND QWS.subject_name = {$_SESSION['subject']}
+				AND QWU.username = {$_SESSION['username']}");
 
+		if ($result == false) {
+			echo 'Error: invalid querey to retrieve decks names.';
+		}
 
-		<tr>
-			<td>deck</td>
-			<td><A type="button" class="btn btn-danger btn-xs"> Edit</A></td>
-			<td><A type="button" class="btn btn-success btn-xs"> Run</A></td>
-		</tr>
+		if ($result->num_rows == 0)
+		{
+			echo "No decks available";
+		}
+		else
+		{
+			while($row = $result->fetch_assoc()){
+				echo "<tr>
+					<td>{$row['deck_name']} </td>
+					<td><A type=\"button\" class=\"btn btn-danger btn-xs\"> Edit</A></td>
+					<td><A type=\"button\" class=\"btn btn-success btn-xs\"> Run</A></td>
+				</tr>";
+			}
+	}
+	$dbc = null;
 	?>
-		<tr>
-			<td>deck</td><td>edit</td><td>run</td>
-		</tr>
 	</table>
 </div>
 

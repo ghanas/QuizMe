@@ -50,8 +50,11 @@ $dbc = db_connect();
 	<h2>Your Subjects</h2>
 	<?php
 	$query = <<<MYSQL
-	SELECT
+	SELECT 
 MYSQL;
+
+	while ($row = $res->fetch_assoc()) {
+	}
 	?>
 	<div class="row">
 		<div class="col-md-4 text-centered">

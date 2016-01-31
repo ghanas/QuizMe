@@ -1,5 +1,7 @@
 <?php
 
+session_start();
+
 require_once('includes/template.php');
 
 start_template();
@@ -7,7 +9,7 @@ start_template();
 ?>
 
 <div class="jumbotron text-center">
-	<h1>QuizMe</h1>
+	<h1>QuizWhiz</h1>
 	<p>Created by students, to help students succeed.</p>
 </div>
 

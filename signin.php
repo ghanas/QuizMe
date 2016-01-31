@@ -102,13 +102,11 @@ function process_create_user()
 	$dbc = db_connect();
 
 	$fail = '';
-	$desiredUsername = htmlentities(strip_tags($_POST['des_username']));
-	$desiredEmail = htmlentities(strip_tags($_POST['des_email']));
+	$desiredUsername = strtolower(htmlentities(strip_tags($_POST['des_username'])));
+	$desiredEmail = strtolower(htmlentities(strip_tags($_POST['des_email'])));
 	$desiredPass = htmlentities(strip_tags($_POST['des_pwd']));
 	$desiredPass2 = htmlentities(strip_tags($_POST['des_pwd2']));
 	$type = intval($_POST['type']);
-
-	var_dump($desiredUsername);
 
 	if ($dbc == false) {
 		show_forms('', 'Error: unable to connect to the database.');

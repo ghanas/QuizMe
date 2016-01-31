@@ -45,21 +45,24 @@ start_template();
 
 <div class="container-fluid bg-2">
 	<h2>Your Subjects</h2>
+	<?php
+	
+	?>
 	<div class="row">
 		<div class="col-md-4 text-centered">
-			<button class="btn btn-lg bordered-1">
-				<h3>Japanese</h3>
-			</button>
+			<a class="subj_btn" href="">
+				Japanese
+			</a>
 		</div>
 		<div class="col-md-4 text-centered">
-			<button class="btn btn-lg bordered-1">
-				<h3>Computer Science</h3>
-			</button>
+			<a class="subj_btn" href="">
+				Computer Science
+			</a>
 		</div>
 		<div class="col-md-4 text-centered">
-			<button class="btn btn-lg bordered-1">
-				<h3>Electrical Engineering</h3>
-			</button>
+			<a class="subj_btn" href="">
+				Electrical Engineering
+			</a>
 		</div>
 	</div>
 </div>

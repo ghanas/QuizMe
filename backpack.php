@@ -28,6 +28,9 @@ if (!is_logged_in()) {
 // start the template
 start_template();
 
+// connect to the database
+$dbc = db_connect();
+
 // First section: User statistics
 ?>
 
@@ -46,7 +49,9 @@ start_template();
 <div class="container-fluid bg-2">
 	<h2>Your Subjects</h2>
 	<?php
-	
+	$query = <<<MYSQL
+	SELECT
+MYSQL;
 	?>
 	<div class="row">
 		<div class="col-md-4 text-centered">

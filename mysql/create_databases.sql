@@ -1,3 +1,11 @@
+DROP TABLE IF EXISTS qw_deck_card_rel;
+DROP TABLE IF EXISTS qw_decks;
+DROP TABLE IF EXISTS qw_flash_cards;
+DROP TABLE IF EXISTS qw_passwords;
+DROP TABLE IF EXISTS qw_subjects;
+DROP TABLE IF EXISTS qw_subj_user_rel;
+DROP TABLE IF EXISTS qw_users;
+
 CREATE TABLE `qw_deck_card_rel` (
 		`card_id` int(11) NOT NULL,
 		`deck_id` int(11) NOT NULL,
@@ -51,5 +59,5 @@ CREATE TABLE `qw_users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
   `user_type` int(4) DEFAULT NULL,
-  PRIMARY KEY (`userId`)
+  PRIMARY KEY (`user_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

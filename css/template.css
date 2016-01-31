@@ -45,3 +45,29 @@
     border-color: transparent;
     color: #fff;
 }
+
+.subj_btn {
+	cursor: pointer;
+	display: inline-block;
+	width: 250px;
+	height: 150px;
+	font-size: 24px;
+	padding-top: 55px;
+	text-align: center;
+	text-decoration: none;
+	color: white;
+	font-weight: bold;
+	border: 2px solid black;
+	border-radius: 5px;
+	background: #2B3439;
+	margin-bottom: 20px;
+}
+
+.subj_btn:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.subj_btn:visited {
+	color: white;
+}

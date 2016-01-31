@@ -53,10 +53,10 @@ function process_signin()
 	// Prepared statements are great for ensuring that SQL injection is near
 	// impossible.
 	$query = <<<MYSQL
-	SELECT password, salt, username, email, userType
-	FROM qm_users a, qm_passwords b
+	SELECT password, salt, username, email, user_type
+	FROM qw_users a, qw_passwords b
 	WHERE
-		a.userId = b.userId AND
+		a.user_id = b.user_id AND
 		$userOrEmail = :identifier
 MYSQL;
 
@@ -115,7 +115,7 @@ function process_create_user()
 	// Verify that the username doesn't exist
 	$query = <<<MYSQL
 	SELECT *
-	FROM qm_users
+	FROM qw_users
 	WHERE
 		username = :name
 	LIMIT 1
@@ -133,7 +133,7 @@ MYSQL;
 	// Verify that the email doesn't exist
 	$query = <<<MYSQL
 	SELECT *
-	FROM qm_users
+	FROM qw_users
 	WHERE
 		email = :em
 	LIMIT 1
@@ -175,8 +175,8 @@ MYSQL;
 
 	// Insert user
 	$query = <<<MYSQL
-	INSERT INTO qm_users 
-		(username, email, userType)
+	INSERT INTO qw_users 
+		(username, email, user_type)
 	VALUES 
 		(?, ?, ?)
 MYSQL;
@@ -195,11 +195,11 @@ MYSQL;
 
 	// Insert password
 	$query = <<<MYSQL
-	INSERT INTO qm_passwords 
-		(userId, password, salt)
+	INSERT INTO qw_passwords 
+		(user_id, password, salt)
 	VALUES 
 		( 
-			(SELECT userId FROM qm_users WHERE username = ? LIMIT 1),
+			(SELECT user_id FROM qw_users WHERE username = ? LIMIT 1),
 			?, 
 			?
 		)

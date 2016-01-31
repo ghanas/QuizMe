@@ -25,7 +25,7 @@ CREATE TABLE `qw_flash_cards` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 CREATE TABLE `qw_passwords` (
-  `userId` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
   `password` varchar(64) COLLATE utf8_unicode_ci NOT NULL,
   `salt` varchar(32) COLLATE utf8_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -48,8 +48,8 @@ CREATE TABLE `qw_subj_user_rel` (
 
 CREATE TABLE `qw_users` (
   `username` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `userId` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL AUTO_INCREMENT,
   `email` varchar(255) CHARACTER SET latin1 DEFAULT NULL,
-  `userType` int(4) DEFAULT NULL,
+  `user_type` int(4) DEFAULT NULL,
   PRIMARY KEY (`userId`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;

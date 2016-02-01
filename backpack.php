@@ -51,28 +51,36 @@ $dbc = db_connect();
 	<?php
 	$query = <<<MYSQL
 	SELECT 
+		b.subject_name, a.subj_id 
+	FROM 
+		qw_subj_user_rel a, qw_subjects b
+	WHERE 
+		a.subj_id = b.id AND
+		user_id = (SELECT user_id FROM qw_users WHERE username = :name)
 MYSQL;
 
-	while ($row = $res->fetch_assoc()) {
+	$stmt = $dbc->prepare($query);
+	$stmt->bindParam(':name', $_SESSION['username']);
+	$stmt->execute() or die('query broke');
+
+	$counter = 0;
+	echo '<div class="row">' . PHP_EOL;
+	while ($row = $stmt->fetch()) {
+		echo '<div class="col-md-4 text-centered">' . PHP_EOL;
+		echo "<a class=\"subj_btn\" href=\"selectDecks.php?subj={$row['subj_id']}\">";
+		echo "{$row['subject_name']}</a>" . PHP_EOL;
+		echo '</div>' . PHP_EOL;
+		$counter += 4;
+		if ($counter == 12) {
+			echo '</div>' . PHP_EOL; // close the row
+			echo '<div class="row">' . PHP_EOL; // start a new one
+			$counter = 0;
+		}
 	}
+	echo '</div>' . PHP_EOL; // close the last row
+
 	?>
-	<div class="row">
-		<div class="col-md-4 text-centered">
-			<a class="subj_btn" href="">
-				Japanese
-			</a>
-		</div>
-		<div class="col-md-4 text-centered">
-			<a class="subj_btn" href="">
-				Computer Science
-			</a>
-		</div>
-		<div class="col-md-4 text-centered">
-			<a class="subj_btn" href="">
-				Electrical Engineering
-			</a>
-		</div>
-	</div>
+	
 </div>
 
 <?php

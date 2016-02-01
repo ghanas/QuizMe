@@ -49,6 +49,15 @@ $dbc = db_connect();
 <div class="container-fluid bg-2">
 	<h2>Your Subjects</h2>
 	<?php
+	$numSubjsQuery = <<<MYSQL
+	SELECT COUNT(*) as cnt FROM qw_subjects;
+MYSQL;
+	
+	$res = $dbc->query($numSubjsQuery);
+
+	$numSubjs = $res->fetch();
+	$numSubjs = $numSubjs[0];
+
 	$query = <<<MYSQL
 	SELECT 
 		b.subject_name, a.subj_id 
@@ -63,6 +72,7 @@ MYSQL;
 	$stmt->bindParam(':name', $_SESSION['username']);
 	$stmt->execute() or die('query broke');
 
+	$total = 0;
 	$counter = 0;
 	echo '<div class="row">' . PHP_EOL;
 	while ($row = $stmt->fetch()) {
@@ -71,6 +81,7 @@ MYSQL;
 		echo "{$row['subject_name']}</a>" . PHP_EOL;
 		echo '</div>' . PHP_EOL;
 		$counter += 4;
+		$total++;
 		if ($counter == 12) {
 			echo '</div>' . PHP_EOL; // close the row
 			echo '<div class="row">' . PHP_EOL; // start a new one
@@ -79,6 +90,11 @@ MYSQL;
 	}
 	echo '</div>' . PHP_EOL; // close the last row
 
+	if ($total != $numSubjs) {
+		echo '<div class="text-centered">' . PHP_EOL;
+		echo '<a class="btn btn-lg btn-default">Add a Subject</a>' . PHP_EOL;
+		echo '</div>' . PHP_EOL;
+	}
 	?>
 	
 </div>

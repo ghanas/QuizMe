@@ -71,3 +71,7 @@
 .subj_btn:visited {
 	color: white;
 }
+
+.inline-centered {
+	margin: 0 auto;
+}

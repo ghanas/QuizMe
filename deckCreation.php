@@ -21,8 +21,8 @@ session_start();
 //*****************************************************************************
 
 // Check that the user is logged in.
-	if (!is_logged_in()) {
-		header("Location: signin.php");
+if (!is_logged_in()) {
+  header("Location: signin.php");
 	}
 
 	// start the template
@@ -32,40 +32,26 @@ session_start();
 ?>
 
 <div class="container-fluid bg-1">
-  <center><h2>Deck Creation</h2></center>
 </div>
 
-<div class="row">
-	<div class="col-md-6">
-		<div class="form-group">
-			<label for="front">Front:</label>
-			<textarea class="form-control" rows="5" id="front"></textarea>
-		</div>
+<form method="post" action="">
+
+	<div class="form-group">
+		<label for="deckName">Deck Name:</label>
+		<input type="text" class="form-control" id="deckName" name="deckName">
 	</div>
-	<div class="col-md-6">
-		<div class="form-group">
-			<label for="back">Back:</label>
-			<textarea class="form-control" rows="5" id="back"></textarea>
+
+  <div class="form-group">
+		<label for="description">Description:</label>
+		<textarea class="form-control" rows="5" id="description" name="description" maxlength="500"></textarea>
 	</div>
-	</div>
-</div>
 
-<center><A type="button" class="btn btn-primary btn-lg">Add Card</A></center>
+	<center><A type="submit" value="createDeck" class="btn btn-primary btn-lg">Create Deck</A></center>
 
-
-
-<div class="container-fluid bg-2">
-
-<table>
-	<tr>
-		<td>number</td><td>front side</td><td>back side</td>
-	</tr>
-</table>
-</div>
+	<br><br><br>
+</form>
 
 
-<center><A type="button" class="btn btn-primary btn-lg">Add Deck</A></center>
-<br><br><br>
 
 <?php
 	end_template();

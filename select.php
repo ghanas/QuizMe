@@ -78,7 +78,7 @@ if (!is_logged_in()) {
 
 <br><br><br>
 
-<center><A type="button" class="btn btn-primary btn-lg">Create A Deck</A></center>
+<center><A href="deckCreation.php" type="button" class="btn btn-primary btn-lg">Create A Deck</A></center>
 <br><br><br>
 <center><A type="button" class="btn btn-primary btn-lg">Find A Deck</A></center>
 <br><br><br>

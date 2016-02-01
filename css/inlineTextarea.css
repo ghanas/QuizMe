@@ -1,0 +1,8 @@
+#inlineDiv {
+	display:inline-block;
+}
+#inlineTextarea {
+	resize: none;
+	border : 2px solid black;
+	width: 500px;
+}
